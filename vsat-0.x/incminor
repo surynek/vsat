@@ -1,0 +1,8 @@
+if [ $((`cat minor` + 1)) -lt 10 ];
+then
+	NEW_MINOR=0$((`cat minor` + 1));
+else
+	NEW_MINOR=$((`cat minor` + 1));
+fi;
+
+echo $NEW_MINOR > minor

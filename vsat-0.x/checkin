@@ -1,0 +1,12 @@
+## cvs commit
+make distclean
+
+./mkversion
+
+mv ../vsat-0.x ../vsat-`cat version`
+tar -cvzf ../vsat-`cat version`.tgz ../vsat-`cat version`
+mv ../vsat-`cat version` ../vsat-0.x
+./configure --enable-debugging
+
+./incminor
+./mkversion

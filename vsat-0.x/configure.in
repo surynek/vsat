@@ -1,0 +1,147 @@
+dnl $Id: configure.in,v 1.6 2007/09/18 02:33:46 pavel Exp $
+
+dnl Initializing autoconf stuff.
+
+AC_REVISION($Revision: 1.6 $)
+
+AC_INIT(src/vsat.cpp)
+
+S_product="VSAT"
+PRODUCT=$S_product
+AC_SUBST(S_product)
+
+S_version=`cat version`
+VERSION=$S_version
+AC_SUBST(S_version)
+
+S_author="Pavel Surynek"
+AUTHOR=$S_author
+AC_SUBST(S_author)
+
+S_author_long="Pavel Surynek <pavel.surynek@mff.cuni.cz>"
+AUTHOR=$S_author_long
+AC_SUBST(S_author_long)
+
+AM_INIT_AUTOMAKE("vsat", $S_version)
+
+
+dnl Checks for programs.
+
+AC_PROG_CC
+AC_PROG_CPP
+AC_PROG_CXX
+AC_PROG_INSTALL
+AC_PROG_MAKE_SET
+AC_PROG_RANLIB
+
+AM_PROG_LIBTOOL
+
+
+dnl Checks for header files.
+
+AC_SUBST(S_include)
+S_include='-I$(top_srcdir)/src -I$(top_builddir)/src -I$(top_srcdir) -I$(top_builddir)'
+
+AC_HEADER_STDC
+dnl AC_CHECK_HEADERS(unistd.h)
+		
+
+dnl Checks for typedefs.
+
+
+dnl Checks for structures.
+
+
+dnl Checks for compiler characteristics.
+
+AC_CHECK_SIZEOF(     char, 1)
+AC_CHECK_SIZEOF(    short, 2)
+AC_CHECK_SIZEOF(      int, 0)
+AC_CHECK_SIZEOF(     long, 4)
+AC_CHECK_SIZEOF(long long, 0)
+
+
+
+dnl Checks for library functions.
+
+
+dnl Checks for system services.
+
+
+dnl Miscelaneous variables.
+
+AC_SUBST(S_clean)
+S_clean='*~ core *output* *profile* *.out'
+
+
+dnl Check the command line arguments.
+
+AC_MSG_CHECKING("if debugging enabled")
+AC_SUBST(S_debugging)
+AC_ARG_ENABLE(debugging,
+	      [  --enable-debugging	enable debugging support (enables asserts and debugging actions)]
+	      [                         [default=no]],
+	      [case ${enableval} in
+   	       yes)  S_debugging=yes  ;;
+    		no)  S_debugging=no   ;;
+     		 *)  AC_MSG_ERROR(bad value \"${enableval}\" for --enable-debugging)  ;;
+  	       esac],
+	      S_debugging=no)
+AC_MSG_RESULT($S_debugging)
+
+
+AC_MSG_CHECKING("if profiling enabled")
+AC_SUBST(S_profiling)
+AC_ARG_ENABLE(profiling,
+	      [  --enable-profiling	enable profiling support (generates extra code for gprof tool)]
+	      [                         [default=no]],
+	      [case ${enableval} in
+   	       yes)  S_profiling=yes  ;;
+    		no)  S_profiling=no   ;;
+     		 *)  AC_MSG_ERROR(bad value \"${enableval}\" for --enable-profiling)  ;;
+  	       esac],
+	      S_profiling=no)
+AC_MSG_RESULT($S_profiling)
+
+
+AC_MSG_CHECKING("if full optimization enabled")
+AC_SUBST(S_full_optimization)
+AC_ARG_ENABLE(full_optimization,
+	      [  --enable-full-optimization	enable full optimization (not compatible with profilling and debugging mode)]
+	      [                         	[default=no]],
+	      [case ${enableval} in
+   	       yes)  S_full_optimization=yes  ;;
+    		no)  S_full_optimization=no   ;;
+     		 *)  AC_MSG_ERROR(bad value \"${enableval}\" for --enable-full-optimization)  ;;
+  	       esac],
+	      S_full_optimization=no)
+AC_MSG_RESULT($S_full_optimization)
+
+
+if test "$S_debugging" = "yes"; then
+	if test "$S_profiling" = "yes"; then
+		CXXFLAGS=$sCXX_FLAGS" -O0 -g -W -pg -Wall"
+		AC_DEFINE(sDEBUG)
+	else
+		CXXFLAGS=$sCXX_FLAGS" -O0 -g -W -Wall"
+		AC_DEFINE(sDEBUG)
+	fi
+else
+	if test "$S_profiling" = "yes"; then
+		CXXFLAGS=$sCXX_FLAGS" -O2 -W -pg -Wall"
+	else
+		CXXFLAGS=$sCXX_FLAGS" -O2 -W -Wall"
+	fi
+fi
+
+if test "$S_full_optimization" = "yes"; then
+   CXXFLAGS=$sCXX_FLAGS" -O3 -mtune=opteron -W -Wall"
+   CFLAGS=$sC_FLAGS" -O3 -mtune=opteron -W -Wall"
+fi
+
+
+dnl Done.
+
+AC_OUTPUT([Makefile
+	   src/Makefile
+	   src/version.h])

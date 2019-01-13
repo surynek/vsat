@@ -1,0 +1,132 @@
+This file contains any messages produced by compilers while
+running configure, to aid debugging if configure makes a mistake.
+
+configure:962: checking for a BSD compatible install
+configure:1015: checking whether build environment is sane
+configure:1072: checking whether make sets ${MAKE}
+configure:1118: checking for working aclocal-1.4
+configure:1131: checking for working autoconf
+configure:1144: checking for working automake-1.4
+configure:1157: checking for working autoheader
+configure:1170: checking for working makeinfo
+configure:1189: checking for gcc
+configure:1302: checking whether the C compiler (gcc  ) works
+configure:1318: gcc -o conftest    conftest.c  1>&5
+configure:1344: checking whether the C compiler (gcc  ) is a cross-compiler
+configure:1349: checking whether we are using GNU C
+configure:1358: gcc -E conftest.c
+configure:1377: checking whether gcc accepts -g
+configure:1409: checking how to run the C preprocessor
+configure:1430: gcc -E  conftest.c >/dev/null 2>conftest.out
+configure:1493: checking for c++
+configure:1525: checking whether the C++ compiler (c++  ) works
+configure:1541: c++ -o conftest    conftest.C  1>&5
+configure:1567: checking whether the C++ compiler (c++  ) is a cross-compiler
+configure:1572: checking whether we are using GNU C++
+configure:1581: c++ -E conftest.C
+configure:1600: checking whether c++ accepts -g
+configure:1643: checking for a BSD compatible install
+configure:1696: checking whether make sets ${MAKE}
+configure:1725: checking for ranlib
+configure:1765: checking for Cygwin environment
+configure:1781: gcc -c -g -O2  conftest.c 1>&5
+configure: In function `main':
+configure:1777: error: `__CYGWIN32__' undeclared (first use in this function)
+configure:1777: error: (Each undeclared identifier is reported only once
+configure:1777: error: for each function it appears in.)
+configure: failed program was:
+#line 1770 "configure"
+#include "confdefs.h"
+
+int main() {
+
+#ifndef __CYGWIN__
+#define __CYGWIN__ __CYGWIN32__
+#endif
+return __CYGWIN__;
+; return 0; }
+configure:1798: checking for mingw32 environment
+configure:1810: gcc -c -g -O2  conftest.c 1>&5
+configure: In function `main':
+configure:1806: error: `__MINGW32__' undeclared (first use in this function)
+configure:1806: error: (Each undeclared identifier is reported only once
+configure:1806: error: for each function it appears in.)
+configure: failed program was:
+#line 1803 "configure"
+#include "confdefs.h"
+
+int main() {
+return __MINGW32__;
+; return 0; }
+configure:1902: checking host system type
+configure:1923: checking build system type
+configure:1952: checking for ld used by GCC
+configure:2020: checking if the linker (/usr/bin/ld) is GNU ld
+GNU ld version 2.15.92.0.2 20040927
+configure:2037: checking for /usr/bin/ld option to reload object files
+configure:2049: checking for BSD-compatible nm
+configure:2087: checking for a sed that does not truncate output
+configure:2171: checking whether ln -s works
+configure:2192: checking how to recognise dependent libraries
+configure:2378: checking for object suffix
+configure:2384: gcc -c -g -O2  conftest.c 1>&5
+configure:2404: checking for executable suffix
+configure:2414: gcc -o conftest -g -O2   conftest.c  1>&5
+configure:2445: checking command to parse /usr/bin/nm -B output
+configure:2528: gcc -c -g -O2  conftest.c 1>&5
+configure:2531: /usr/bin/nm -B conftest.o | sed -n -e 's/^.*[ ]\([ABCDGISTW][ABCDGISTW]*\)[ ][ ]*\(\)\([_A-Za-z][_A-Za-z0-9]*\)$/\1 \2\3 \3/p' > conftest.nm
+configure:2582: gcc -o conftest -g -O2   conftest.c conftstm.o 1>&5
+configure:2631: checking for dlfcn.h
+configure:2641: gcc -E  conftest.c >/dev/null 2>conftest.out
+configure:2810: checking for ranlib
+configure:2877: checking for strip
+configure:2979: gcc -c -g -O2  conftest.c 1>&5
+configure:3134: checking for objdir
+configure:3161: checking for gcc option to produce PIC
+configure:3309: checking if gcc PIC flag -fPIC works
+configure:3323: gcc -c -g -O2 -fPIC -DPIC  conftest.c 1>&5
+configure:3375: checking if gcc static flag -static works
+configure:3390: gcc -o conftest -g -O2   -static conftest.c  1>&5
+/usr/bin/ld: cannot find -lc
+collect2: ld returned 1 exit status
+configure: failed program was:
+#line 3383 "configure"
+#include "confdefs.h"
+
+int main() {
+
+; return 0; }
+configure:3417: checking if gcc supports -c -o file.o
+configure:3436: gcc -c -g -O2 -o out/conftest2.o  conftest.c 1>&5
+configure:3465: checking if gcc supports -c -o file.lo
+configure:3483: gcc -c -g -O2 -c -o conftest.lo  conftest.c 1>&5
+configure:3533: checking if gcc supports -fno-rtti -fno-exceptions
+configure:3546: gcc -c -g -O2 -fno-rtti -fno-exceptions -c conftest.c  conftest.c 1>&5
+cc1: warning: command line option "-fno-rtti" is valid for C++/ObjC++ but not for C
+cc1: warning: command line option "-fno-rtti" is valid for C++/ObjC++ but not for C
+configure:3573: checking whether the linker (/usr/bin/ld) supports shared libraries
+configure:4272: checking how to hardcode library paths into programs
+configure:4300: checking whether stripping libraries is possible
+configure:4314: checking dynamic linker characteristics
+configure:4732: checking if libtool supports shared libraries
+configure:4736: checking whether to build shared libraries
+configure:4759: checking whether to build static libraries
+configure:5295: checking whether -lc should be explicitly linked in
+configure:5302: gcc -c -g -O2  conftest.c 1>&5
+configure:5315: gcc -shared conftest.o  -v -Wl,-soname -Wl,conftest -o conftest 2>&1 | grep  -lc  >/dev/null 2>&1
+configure:5906: checking for ANSI C header files
+configure:5919: gcc -E  conftest.c >/dev/null 2>conftest.out
+configure:5986: gcc -o conftest -g -O2   conftest.c  1>&5
+configure:6017: checking size of char
+configure:6036: gcc -o conftest -g -O2   conftest.c  1>&5
+configure:6056: checking size of short
+configure:6075: gcc -o conftest -g -O2   conftest.c  1>&5
+configure:6095: checking size of int
+configure:6114: gcc -o conftest -g -O2   conftest.c  1>&5
+configure:6134: checking size of long
+configure:6153: gcc -o conftest -g -O2   conftest.c  1>&5
+configure:6173: checking size of long long
+configure:6192: gcc -o conftest -g -O2   conftest.c  1>&5
+configure:6225: checking if debugging enabled
+configure:6243: checking if profiling enabled
+configure:6261: checking if full optimization enabled
